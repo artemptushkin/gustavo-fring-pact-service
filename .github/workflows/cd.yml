@@ -41,7 +41,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: build
-        run: ./mvnw clean package -Dpactbroker.consumerversionselectors.tags=$GIT_BRANCH,test,prod -Dpact.provider.tag=$GIT_BRANCH
+        run: ./mvnw clean package -Dpactbroker.consumerversionselectors.tags=$GIT_BRANCH,test,prod -Dpact.provider.tag=$GIT_BRANCH -Dpact.verifier.publishResults=true
   deploy:
     needs: [build]
     env:
