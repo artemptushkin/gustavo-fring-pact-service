@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<pact.consumer.version>${project.version}</pact.consumer.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +24,11 @@
 		<dependency>
 			<groupId>au.com.dius.pact.provider</groupId>
 			<artifactId>junit5spring</artifactId>
+			<version>4.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>au.com.dius.pact.consumer</groupId>
+			<artifactId>junit5</artifactId>
 			<version>4.1.7</version>
 		</dependency>
 
@@ -77,6 +83,18 @@
 							<value>dev</value>
 						</property>
 					</systemProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/maven -->
+				<groupId>au.com.dius.pact.provider</groupId>
+				<artifactId>maven</artifactId>
+				<version>4.1.12</version>
+				<configuration>
+					<pactBrokerUrl>https://hello.pact.dius.com.au/</pactBrokerUrl>
+					<pactBrokerToken>GJADqmiVcrtQu5rjyxpjIQ</pactBrokerToken>
+					<projectVersion>${pact.consumer.version}</projectVersion>
+					<tags>develop</tags>
 				</configuration>
 			</plugin>
 		</plugins>
